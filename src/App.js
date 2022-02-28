@@ -2,49 +2,54 @@ import React, {useState} from 'react'
 import './App.css'
 
 import Home from './Home'
-import Header from './Header'
+//import Header from './Header'
 import Calc from './Calc'
 import Album from './Album'
 import Users from './Users'
 
+const defaultPage = 'calc'
 
 const pages = {
   home: {
-    text: "Home",
+    text: 'Home',
     component: Home,
   },
-  header: {
-    text: "Header",
-    component: Header,
-  },
+
   calc: {
-    text: "Calc",
+    text: 'Calc',
     component: Calc,
   },
   album: {
-    text: "Album",
+    text: 'Album',
     component: Album,
   },
   users: {
-    text: "Users",
+    text: 'Users',
     component: Users,
   }
 }
 
+
+
 function App (){
-  const [page, setPage] = useState("Home")
-    const handleChangePage = 
-}
+  const [page, setPage] = useState(defaultPage)
 
+  const handleChangePage = page => {
+    setPage(page)
+  }
 
-function App() {
+  const Page = pages[page].component
+  
+  const pageNames = Object.keys(pages)
+  
+
   return (
-    <>
-      <Header /> 
-      <Home />
-      <Calc />
-      <Album />
-      <Users />
+    <>   
+        {
+          pageNames.map(page => <button onClick={() => handleChangePage(page)}> {pages[page].text} </button>)
+        }
+          
+        {Page && <Page />}
     </>
   )
 }

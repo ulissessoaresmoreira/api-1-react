@@ -1,5 +1,78 @@
 .calc{
-    width: 250px;
-    height: 380px;
+    width: 520px;
+    height: 720px;
     background-color: #c2c2c2;
+    border-radius: 10px;
+}
+
+.calc span{
+    width: 494px;
+    height: 160px;
+    background-color: black;
+}
+
+
+.grid-container{
+    display: grid;
+    position:relative;
+    grid-template-columns: auto auto auto auto;
+    gap: 5px;
+    padding: 10px;
+    margin: 0;
+    
+}
+
+.grid-container > div {
+    text-align: center;    
+    border: 1px solid #c2c2c2;    
+}
+
+.grid-itemDisplay{
+    grid-column-start:1;
+    grid-column-end:5;
+    background-color: black;
+    border-radius: 20px;
+}
+
+.grid-itemC{
+    grid-column-start:1;
+    grid-column-end:1;
+    grid-row-start: 2;
+    grid-row-end: 2;
+    padding: 0px;    
+}
+
+.grid-itemP{
+    grid-column-start:2;
+    grid-column-end:2;
+    grid-row-start: 2;
+    grid-row-end: 2;
+    padding: 0px;
+}
+
+.grid-itemPorc{
+    grid-column-start:3;
+    grid-column-end:3;
+    grid-row-start: 2;
+    grid-row-end: 2;
+    padding: 0px;
+}
+
+.grid-itemDivid{
+    grid-column-start:4;
+    grid-column-end:4;
+    grid-row-start: 2;
+    grid-row-end: 2;
+    padding: 0px;
+}
+
+
+.botao{
+    width:100px;
+    height: 100px;
+}
+
+.calc button{
+    border-radius: 20px;
+    font-size: 40px;
 }
