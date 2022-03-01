@@ -1,56 +1,48 @@
 import React, {useState} from 'react'
 import './App.css'
 
-import Home from './Home'
-//import Header from './Header'
-import Calc from './Calc'
-import Album from './Album'
-import Users from './Users'
+import Template from './template/Template'
+import Home from './pages/Home'
+import Calc from './pages/Calc'
+import Album from './pages/Album'
+import Users from './pages/Users'
 
-const defaultPage = 'calc'
+const defaultPage = 'home'
 
 const pages = {
   home: {
     text: 'Home',
     component: Home,
   },
-
   calc: {
-    text: 'Calc',
+    text: 'Calculadora',
     component: Calc,
   },
   album: {
-    text: 'Album',
+    text: 'Álbum',
     component: Album,
   },
   users: {
-    text: 'Users',
+    text: 'Usuários',
     component: Users,
   }
 }
-
-
 
 function App (){
   const [page, setPage] = useState(defaultPage)
 
   const handleChangePage = page => {
-    setPage(page)
+    setPage(page)    
   }
 
-  const Page = pages[page].component
+  const Page = pages[page].component  
   
-  const pageNames = Object.keys(pages)
   
-
+                // ↓ PASSADO POR PROP E RECEBIDO NO TEMPLATE POR PROP E DEPOIS ENVIADA AO NAV POR PROP. DENTRO DA VARIÁVEL PAGE TEM A PÁGINA QUE ESTÁ ATIVA E DENTRO DELA TEM O NOME QUE PODE SER USADO NO TÍTULO, ENTÃO PASSEI NA ACTIVEPAGE PARA USAR NO TITLE NO TEMPLATE
   return (
-    <>   
-        {
-          pageNames.map(page => <button onClick={() => handleChangePage(page)}> {pages[page].text} </button>)
-        }
-          
-        {Page && <Page />}
-    </>
+    <Template pages={pages} activePage={page} onChangePage={handleChangePage}>    
+      {Page && <Page />}
+    </Template>     
   )
 }
 

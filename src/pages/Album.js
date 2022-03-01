@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react'
-import './album.css'
+import '../album.css'
 
-import Template from './Template'
-//import Loading from './Loading'
+import Loading from '../components/Loading'
+
 
 const Album = () => {
     const [isLoading, setisLoading] = useState(false)
@@ -10,6 +10,7 @@ const Album = () => {
 
     useEffect(() => {
         setisLoading(true)
+        
         fetch('https://jsonplaceholder.typicode.com/albums')
             .then((response) => response.json())
             .then(data => { 
@@ -22,12 +23,8 @@ const Album = () => {
     return(
 
         
-        <Template
-            title='Albuns'
-            children={isLoading}
-        >
-            
-    
+        <>
+            <Loading visible={isLoading} />
             {
             album.map(album => {
                 return(
@@ -37,7 +34,7 @@ const Album = () => {
                 )
             })
             }
-        </Template>
+        </>
         
     )    
 }
